@@ -1,5 +1,3 @@
-# Task 2
-[S3 website](http://cloudx-fabian-bucket-task2.s3-website-us-east-1.amazonaws.com/)
 [CloudFront URL](https://d39uemoe8h9woh.cloudfront.net)
 
 # Scripts

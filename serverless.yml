@@ -1,4 +1,4 @@
-service: cloudx-fabian-service-task2
+service: cloudx-shop-frontend
 
 frameworkVersion: '2'
 
