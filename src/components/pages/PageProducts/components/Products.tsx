@@ -34,19 +34,22 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Products() {
   const classes = useStyles();
+  const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     const loadProducts = async () => {
       const productList = await getProductsList()
       setProducts(productList);
+      setLoading(false);
     };
     loadProducts();
   }, [])
 
   return (
     <Grid container spacing={4}>
-      {products.map((product: Product, index: number) => (
+      {loading && <div>Loading...</div>}
+      {!loading && products.map((product: Product, index: number) => (
         <Grid item key={product.id} xs={12} sm={6} md={4}>
           <Card className={classes.card}>
             <CardMedia
