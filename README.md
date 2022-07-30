@@ -1,4 +1,10 @@
-[CloudFront URL](https://d39uemoe8h9woh.cloudfront.net)
+# Task 4
+
+4.2
+- Product model was already implemented during Task 3 `src/models/Product.ts`.
+
+# Task 3
+[CloudFront URL](https://d13scjijlsftvl.cloudfront.net)
 
 # Scripts
 
