@@ -34,9 +34,13 @@ export default function CSVFileImport({url, title}: CSVFileImportProps) {
   }
 
   const uploadFile = async (e: any) => {
-    const headers = {
+    const token = getToken()
+    const headers = token && {
       Authorization: `Basic ${getToken()}`
     }
+
+    console.log('headers', headers)
+    console.log('url', url)
 
       // Get the presigned URL
       const response = await axios({
@@ -49,7 +53,9 @@ export default function CSVFileImport({url, title}: CSVFileImportProps) {
       })
       console.log('File to upload: ', file.name)
       console.log('Uploading to: ', response.data)
-      const result = await fetch(response.data, {
+      const uploadUrl = response.data.signedUrl
+      console.log('uploadUrl', uploadUrl)
+      const result = await fetch(uploadUrl, {
         method: 'PUT',
         body: file
       })

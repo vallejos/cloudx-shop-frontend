@@ -13,18 +13,23 @@ axios.interceptors.response.use(
     return response;
   },
   function(error) {
-    switch (error.response.status) {
-      case 400:
-        alert(error.response.data?.data)
-        return Promise.reject(error?.response ?? error)
-
+    console.log(error)
+    switch (error?.response?.status) {
       case 401:
-        alert(`Authorization Failed: ${error.response.status}`)
+        alert(`Authorization Failed: ${error?.response?.status} ${error?.response?.statusText}`)
         return Promise.reject(error?.response ?? error)
 
       case 403:
-        alert(`Access Denied: ${error.response.status}`)
+        alert(`Access Denied: ${error?.response.status} ${error?.response?.statusText}`)
         return Promise.reject(error?.response ?? error)  
+
+      case 400:
+      case 500:
+        alert(`${error?.response?.status} ${error?.response?.statusText}`)
+        return Promise.reject(error?.response ?? error)
+
+      default:
+        console.log('Error: ', error)
     }
   }
 
