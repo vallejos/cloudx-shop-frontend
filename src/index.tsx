@@ -13,12 +13,21 @@ axios.interceptors.response.use(
     return response;
   },
   function(error) {
-    if (error?.response?.status === 400) {
-      alert(error.response.data?.data);
-    }
+    switch (error.response.status) {
+      case 400:
+        alert(error.response.data?.data)
+        return Promise.reject(error?.response ?? error)
 
-    return Promise.reject(error?.response ?? error);
+      case 401:
+        alert(`Authorization Failed: ${error.response.status}`)
+        return Promise.reject(error?.response ?? error)
+
+      case 403:
+        alert(`Access Denied: ${error.response.status}`)
+        return Promise.reject(error?.response ?? error)  
+    }
   }
+
 );
 
 ReactDOM.render(

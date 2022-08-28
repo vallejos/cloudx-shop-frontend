@@ -1,3 +1,9 @@
+# Task 7
+
+Task 7.3
+- Request from the client application to the /import path of the Import Service should have Basic Authorization header
+- Client should get authorization_token value from browser localStorage
+
 # Task 4
 
 4.2
